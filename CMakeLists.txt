@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.4)
-project(imgui-demo)
+project(engine)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
@@ -41,7 +41,7 @@ include_directories(${OPENGL_INCLUDE_DIR})
 #
 ################################################################################
 
-add_executable( imgui-demo
+add_executable( engine
 
         src/main.cpp
 		src/ext/imgui_impl_sdl_gl3.cpp
@@ -66,7 +66,7 @@ add_executable( imgui-demo
 )
 
 
-target_link_libraries( imgui-demo 
+target_link_libraries( engine 
     ${CONAN_LIBS}
     ${OPENGL_gl_LIBRARY}
     ${OPENGL_glu_LIBRARY}
