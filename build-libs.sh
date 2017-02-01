@@ -3,7 +3,7 @@
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-echo -e "\n  build-libs.sh  \n"
+echo -e "\n  build-libs.sh  \n\n"
 
 
 
@@ -33,7 +33,7 @@ IMGUI_REPO='https://github.com/ocornut/imgui.git'
 echo -e "  Checking external library: imgui"
 if [[ ! -d "$IMGUI_DIR" ]]; then
 	echo "    Could not find source directory: $IMGUI_DIR"
-	echo "    Downloading from: $IMGUI_REPO"
+	echo -e "    Downloading from: $IMGUI_REPO \n"
 	CLONE_CMD="git clone $IMGUI_REPO $IMGUI_DIR"
 	$CLONE_CMD
 	if [[ "$?" -ne 0 ]]; then
@@ -42,12 +42,12 @@ if [[ ! -d "$IMGUI_DIR" ]]; then
 		echo -e "\n  $CLONE_CMD \n"
 		exit 1
 	fi
-	echo "    Download complete."
+	echo -e "\n    Download complete."
 fi
 echo -e "  Using: $IMGUI_DIR \n"
 
 
-echo -e "External libraries are all available. \n"
+echo -e "External libraries are all available. \n\n"
 
 
 
@@ -60,17 +60,17 @@ echo -e "Building C++ libraries with Conan: \n"
 
 
 BUILD_CMD="conan install . --build=missing"
-echo "Conan build command: $BUILD_CMD"
+echo -e "Conan build command: $BUILD_CMD \n"
 $BUILD_CMD
 if [[ "$?" -ne 0 ]]; then
 	echo -e "\n  ERROR: Failed to build the required libraries. \n"
 	echo -e "  Check the system is configured with the required build tools. \n"
 	exit 1
 fi
-echo -e "\nConan build command completed successfully."
+echo -e "\nConan build command completed successfully. \n"
 
 
-echo -e "C++ Libraries were built successfully. \n"
+echo -e "C++ Libraries were built successfully. \n\n"
 
 
 
